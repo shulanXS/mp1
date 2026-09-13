@@ -1,1 +1,249 @@
-/* Your SCSS here. */
+$accent: #13294b;
+$accent-light: #e84a27;
+
+@mixin center { margin: 0 auto; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+h1, h2, h3 { color: $accent; margin: 0 0 16px; }
+a { text-decoration: none; color: inherit; }
+
+section, footer { width: 100%; padding: 80px 20px; }
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: $accent;
+    height: 80px;
+    transition: height 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0 14px;
+        transition: font-size 0.3s ease, color 0.2s ease;
+
+        &.active { color: $accent-light; border-bottom: 2px solid $accent-light; }
+    }
+
+    &.shrink { height: 50px; a { font-size: 14px; } }
+}
+
+body { padding-top: 80px; }
+
+#home {
+    background: url('../assets/uiuc-bg.jpg') center/cover no-repeat fixed;
+    color: #fff;
+    text-align: center;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 { font-size: 64px; color: #fff; }
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    > img {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid $accent;
+    }
+
+    > div { flex: 1; min-width: 260px; }
+
+    button {
+        background: $accent-light;
+        color: #fff;
+        border: none;
+        padding: 10px 22px;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        &:hover { background: darken($accent-light, 8%); }
+    }
+}
+
+#gallery { background: #f5f5f5; text-align: center; }
+
+#carousel {
+    position: relative;
+    @include center;
+    max-width: 1100px;
+    overflow: hidden;
+
+    #slides {
+        display: flex;
+        transition: transform 0.5s ease;
+        > div { min-width: 100%; }
+        img { width: 100%; height: 420px; object-fit: cover; display: block; }
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+        &:hover { background: rgba(0,0,0,0.8); }
+        &:first-of-type { left: 10px; }
+        &:last-of-type  { right: 10px; }
+    }
+}
+
+#interests {
+    background: url('../assets/campus.jpg') center/cover no-repeat fixed;
+    color: #fff;
+    text-align: center;
+
+    h2 { color: #fff; }
+}
+
+#multi-col {
+    @include center;
+    max-width: 1100px;
+    column-count: 3;
+    column-gap: 30px;
+    text-align: left;
+
+    > div {
+        break-inside: avoid;
+        background: rgba(255,255,255,0.92);
+        color: #222;
+        padding: 16px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+
+        img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        h3  { margin: 12px 0 8px; }
+    }
+}
+
+#video {
+    text-align: center;
+
+    video {
+        @include center;
+        display: block;
+        max-width: 720px;
+        width: 100%;
+        border-radius: 6px;
+    }
+}
+
+footer {
+    background: $accent;
+    color: #fff;
+    text-align: center;
+
+    h2 { color: #fff; }
+    p { color: #ccc; margin-top: 20px; }
+}
+
+#social {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+
+    a {
+        width: 32px;
+        height: 32px;
+        background-color: #fff;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        animation: fadein 1s ease;
+        &:hover { background-color: $accent-light; transform: scale(1.15); }
+    }
+
+    .ic-github   { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.13c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z'/></svg>"); mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.13c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z'/></svg>"); }
+    .ic-linkedin { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.44v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z'/></svg>"); mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.44v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z'/></svg>"); }
+    .ic-twitter  { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M23.5 4.72a9.4 9.4 0 0 1-2.7.74 4.7 4.7 0 0 0 2.06-2.59 9.36 9.36 0 0 1-2.98 1.14 4.7 4.7 0 0 0-8.12 4.28A13.32 13.32 0 0 1 2.06 3.7a4.7 4.7 0 0 0 1.45 6.27 4.67 4.67 0 0 1-2.13-.59v.06a4.7 4.7 0 0 0 3.77 4.6 4.7 4.7 0 0 1-2.12.08 4.7 4.7 0 0 0 4.39 3.27A9.43 9.43 0 0 1 0 19.54a13.3 13.3 0 0 0 7.2 2.11c8.64 0 13.37-7.16 13.37-13.37l-.01-.61A9.55 9.55 0 0 0 23.5 4.72z'/></svg>"); mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M23.5 4.72a9.4 9.4 0 0 1-2.7.74 4.7 4.7 0 0 0 2.06-2.59 9.36 9.36 0 0 1-2.98 1.14 4.7 4.7 0 0 0-8.12 4.28A13.32 13.32 0 0 1 2.06 3.7a4.7 4.7 0 0 0 1.45 6.27 4.67 4.67 0 0 1-2.13-.59v.06a4.7 4.7 0 0 0 3.77 4.6 4.7 4.7 0 0 1-2.12.08 4.7 4.7 0 0 0 4.39 3.27A9.43 9.43 0 0 1 0 19.54a13.3 13.3 0 0 0 7.2 2.11c8.64 0 13.37-7.16 13.37-13.37l-.01-.61A9.55 9.55 0 0 0 23.5 4.72z'/></svg>"); }
+    .ic-mail     { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z'/></svg>"); mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z'/></svg>"); }
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+
+    &.hidden { display: none; }
+
+    > div {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 6px;
+        max-width: 480px;
+        width: 90%;
+        position: relative;
+        animation: fadein 0.3s ease;
+    }
+
+    #close {
+        position: absolute;
+        top: 8px;
+        right: 14px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #555;
+        &:hover { color: #222; }
+    }
+}
+
+@media (max-width: 900px) {
+    #about { flex-direction: column; }
+    #multi-col { column-count: 2; }
+}
+
+@media (max-width: 600px) {
+    #navbar { height: 50px; a { font-size: 14px; } }
+    body { padding-top: 50px; }
+    #home h1 { font-size: 40px; }
+    #multi-col { column-count: 1; }
+    #carousel #slides img { height: 240px; }
+}

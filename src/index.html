@@ -1,13 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
-    </head>
-    <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wenjie Che</title>
+</head>
+<body>
+    <header>
+    <nav id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#interests">Interests</a>
+        <a href="#video">Video</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    </header>
+
+    <section id="home">
+        <h1>Wenjie Che</h1>
+        <p>MCS Student at UIUC</p>
+    </section>
+
+    <section id="about">
+        <img src="assets/portrait.jpg" alt="Wenjie Che">
+        <div>
+            <h2>About Me</h2>
+            <p>Hi, I'm Wenjie Che, a graduate student pursuing a Master of Computer Science at the University of Illinois Urbana-Champaign. My interests span software engineering, distributed systems, and building useful tools for everyday problems.</p>
+            <button>Read more</button>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Campus Life</h2>
+        <div id="carousel">
+            <button class="arrow">&#10094;</button>
+            <div id="slides">
+                <div><img src="assets/slide1.jpg" alt=""></div>
+                <div><img src="assets/slide2.jpg" alt=""></div>
+                <div><img src="assets/slide3.jpg" alt=""></div>
+            </div>
+            <button class="arrow">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="interests">
+        <h2>What I Enjoy</h2>
+        <div id="multi-col">
+            <div>
+                <img src="assets/hobby1.jpg" alt="">
+                <h3>Coding</h3>
+                <p>Building small projects, learning new frameworks, and contributing to open source when time allows.</p>
+            </div>
+            <div>
+                <img src="assets/hobby2.jpg" alt="">
+                <h3>Reading</h3>
+                <p>Mostly computer science papers and the occasional novel. I keep a small notebook of ideas.</p>
+            </div>
+            <div>
+                <img src="assets/hobby3.jpg" alt="">
+                <h3>Exploring</h3>
+                <p>Walking around campus, trying new coffee places, and going on day trips around Champaign.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="video">
+        <h2>A Quick Hello</h2>
+        <video controls poster="assets/campus.jpg">
+            <source src="assets/intro.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <footer id="contact">
+        <h2>Get in Touch</h2>
+        <div id="social">
+            <a href="#" class="ic-github" aria-label="github"></a>
+            <a href="#" class="ic-linkedin" aria-label="linkedin"></a>
+            <a href="#" class="ic-twitter" aria-label="twitter"></a>
+            <a href="#" class="ic-mail" aria-label="email"></a>
+        </div>
+        <p>&copy; 2026 Wenjie Che</p>
+    </footer>
+
+    <div id="modal" class="hidden">
+        <div>
+            <span id="close">&times;</span>
+            <h3>More about me</h3>
+            <p>Outside of class I work on side projects, attend CS talks on campus, and occasionally help out with student-run hackathons.</p>
+        </div>
+    </div>
+</body>
 </html>
